@@ -1,0 +1,49 @@
+id,exercise_name,description
+1,BB Bulgarian Split Squat,NULL
+2,BB Overhead Press,NULL
+3,BB Pendlay Row,NULL
+4,SL KB RDL,NULL
+5,BB Deadlift,NULL
+6,Zercher Sq,NULL
+7,Kneeling Landmine Pr,NULL
+8,SA DB/KB Bench Row,NULL
+9,SA Farmers Carry,NULL
+10,Bench Press,NULL
+11,Front Squat,NULL
+12,EZ Bicep Curl,NULL
+13,Double Farmer Carry,NULL
+14,Rear Squat,NULL
+15,Power Clean,NULL
+16,Weighted Rear Deltoid,NULL
+17,Hanging Leg Raise,NULL
+18,Sumo Deadlift,NULL
+19,Pull Up,NULL
+20,Dips,NULL
+21,Weighted Step Up,NULL
+22,Clean/Press,This is performed by doing 1 clean followed by the specified press
+23,Double KB Swing,NULL
+24,Goblet Squat,NULL
+25,SA KB Swing,NULL
+26,Trap Shrug,Done with Trap Bar
+27,TRX Crunch,Same as Atomic Pushup
+28,Glute Bridge,Same as Hip Thrust
+29,Lat Pulldown,Done on Keiser
+30,Renegade Row,NULL
+31,Box Jumps,NULL
+32,Lateral Bear Crawl,NULL
+33,Weighted Lateral Lunge,NULL
+34,Landmine Rotation,NULL
+35,Landmine Lateral Lunge,NULL
+36,Reverse Biceps Curl,NULL
+37,Triceps Extension,Done on Keiser
+38,SA KB Overhead Press,Can be Regular or bottoms-up; strict or push
+39,Double KB Overhead Press,Can be Regular or bottoms-up; strict or push
+40,SA KB snatch,NULL
+41,Double KB snatch,NULL
+42,Turkish Get Up,Can be Regular or bottoms-up
+43,SA KB Clean,NULL
+44,Double KB Clean,NULL
+45,KB Squat,NULL
+46,Romanian Deadlift,NULL
+47,Reverse BB Lunge,NULL
+48,Weighted Calf Raise,NULL
