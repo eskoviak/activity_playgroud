@@ -16,10 +16,14 @@ trainee is doing a 5 set of 5 bench presses at 135 pounds.  A simple notation co
 
 Bench Press 5x5 @ 135
 
-This notation is sucinct, and requires little effort to reord.  However, in a long term training strategy, there is
+This notation is sucinct, and requires little effort to record and understand (by a human).  However, in a long term training strategy, there is
 addtional information to be gleaned:
 
-Total volume lifted:  $\Sigma (r x w )$
+Total volume lifted:
+
+.. math::
+
+  $\Sigma$ r x w
 
 Average reps
 
