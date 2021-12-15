@@ -1,3 +1,17 @@
+'''Activity Interface
+
+Classes
+=======
+
+Activity
+
+
+Functions
+=========
+
+SearchExcercises
+
+'''
 from sqlalchemy.orm import sessionmaker, session
 from sqlalchemy import create_engine, or_
 from sqlalchemy_cockroachdb import run_transaction
@@ -14,16 +28,19 @@ class Activty:
     def __get_session(self):
         """Gets a sessionmaker object
         
-        Opens the cockroach instance based on the URL and returns the sessionmaker object which can be used by other routines.
+        Opens the cockroach instance based on the URL and returns the sessionmaker object which can be used by other routines.  This is a 
+        private function to be called internally.
+
+        Returns:
+        sessionmaker object
         """
-        #uri = 'postgresql://postgres:terces##@localhost/activity'
         return sessionmaker(bind=create_engine(self._uri))
 
     def __search_exercises(self, s : sessionmaker, phrase : str) -> dict():
         """searches excercies for the phrase
 
         Searches the exercises table (exercise_name and description) for the 
-        indicated phrase.
+        indicated phrase.  Interanl function
 
         Returns
         -------
@@ -40,10 +57,3 @@ class Activty:
         """
         return run_transaction(self.__get_session(),
             lambda s: self.__search_exercises(s, phrase))
-
-    def parse_cadence(self, cadence_str : str):
-        """public wrapper for __get_cadence
-        
-        """
-
-        return self.__get_cadence(cadence_str)
