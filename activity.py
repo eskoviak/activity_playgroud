@@ -1,21 +1,8 @@
-'''Activity Interface
-
-Classes
-=======
-
-Activity
-
-
-Functions
-=========
-
-SearchExcercises
-
-'''
+'''Activity Interface'''
 from sqlalchemy.orm import sessionmaker, session
 from sqlalchemy import create_engine, or_
 from sqlalchemy_cockroachdb import run_transaction
-from models import Factors, Exercises, Categories
+from models import Factors, Exercises
 
 import numpy as np, os, re
 
@@ -51,8 +38,14 @@ class Activty:
 
     """Public Functions"""
 
-    def search_exercises(self, phrase : str):
-        """public wrapper for __search_exercises
+    def search_exercises(self, phrase : str) -> dict():
+        """
+        Search the exercises database for a exercises which contain the search phrase.
+
+        :param phrase:  The string to search for
+        :type phrase: str
+        :return: A dictiony of the id, name and description of the exercise
+        :rtype: dict
         
         """
         return run_transaction(self.__get_session(),

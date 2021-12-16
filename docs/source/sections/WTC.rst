@@ -3,7 +3,7 @@ Weight Training Calculus (WTC)
 ==============================
 
 Introduction
-============
+------------
 
 The weight training calculus has two design premises:
 
@@ -23,7 +23,7 @@ Total volume lifted:
 
 .. math::
 
-  \Sigma r \dot w
+  \Sigma r  w
 
 Average reps
 
