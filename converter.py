@@ -1,6 +1,6 @@
-"""cadence module
+"""Converter interface
 
-Used to process the cadence and weight notation found in the .csv file
+Contains the converter class, which provides utilities to convert the input csv file into series for use in analysis.
 
 """
 import re
@@ -11,10 +11,10 @@ class Converter:
     def __init__(self):
         self._multipler_regex = re.compile('^\d*(?=x)')
         self._sequence_regex = re.compile('(?<=x)(\()?([0-9.]([,\s])*)+(\))?')
-        self._flag_regex = re.compile('(?<=\))[a-zA-Z]+')
+        self._flag_regex = re.compile('(?<=\))([a-zA-Z]*)(_[a-z])?')
 
 
-    """Private Functions"""
+    ### Private Functions
     def __get_series(self, cadence_str : str):
         """converts the input string into a series (list)
 
@@ -28,8 +28,7 @@ class Converter:
         list_cadence = []
 
         flags = re.search(self._flag_regex, cadence_str)
-        if flags:
-            str_flags = flags.group(0)
+        if flags: str_flags = flags.group(0)
 
         for token in self.__tokenize(cadence_str):
             list_cadence.extend(self.__parseOperators(token))
@@ -74,16 +73,17 @@ class Converter:
             """
             if sequence := re.search(r'BW', rstring):
                 return ( ['BW'])
+            else: return( [] )
         return (np.tile(list(eval(sequence.group(0))), int(multiplier.group(0) if multiplier else 1)))
 
     """Public Functions"""
     def get_series(self, notation : str):
-        """convert the notation to a list ready to be converted to a np.series and the flags
+        """convert the notation to a list ready to be converted to a np.series.  Also expand the short-hand
+        flags to a list of notes
 
-        Args:
-            notation (str) : The textual string from the input file
-
-        Returns:
-            (list, str) : the first list is the nd.series ready parsed from the notation, the second is a string representing the found
+        :param notation: the field as entered in the incoming csv
+        :type notation: str
+        :return: (notation, notes)
+        :rtype: tuple<list, list>
         """
         return self.__get_series(notation)

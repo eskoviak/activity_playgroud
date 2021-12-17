@@ -1,4 +1,7 @@
-'''Activity Interface'''
+'''Activity Interface
+
+This module contains the Activity class, which provides interfaces for interacting with the activity application
+'''
 from sqlalchemy.orm import sessionmaker, session
 from sqlalchemy import create_engine, or_
 from sqlalchemy_cockroachdb import run_transaction
