@@ -11,7 +11,7 @@ import numpy as np, os, re
 
 class Activty:
 
-    """Private Functions"""
+    ### Private Functions
     def __init__(self):
         self._uri = f"cockroachdb://{os.environ['COCKROACH_ID']}@free-tier.gcp-us-central1.cockroachlabs.cloud:26257/activity?sslmode=verify-full&sslrootcert={os.environ['HOME']}/.postgresql/ca.crt&options=--cluster%3Dgolden-dingo-2123"
 
@@ -39,17 +39,17 @@ class Activty:
         return s.query(Exercises).filter(or_(Exercises.exercise_name.ilike(f"%{phrase}%"), Exercises.description.ilike(f"%{phrase}%")))
 
 
-    """Public Functions"""
-
-    def search_exercises(self, phrase : str) -> dict():
-        """
-        Search the exercises database for a exercises which contain the search phrase.
+    ## Public Functions
+    def search_exercises(self, phrase : str):
+        """Search the exercises database for a exercises which contain the search phrase.
 
         :param phrase:  The string to search for
         :type phrase: str
         :return: A dictiony of the id, name and description of the exercise
-        :rtype: dict
-        
+        :rtype: list<dict>
+
+        The return object(s) in the list have the following format:
+
+        Exercise(id: <id>, exercise_name: <name>, description: <description>)
         """
-        return run_transaction(self.__get_session(),
-            lambda s: self.__search_exercises(s, phrase))
+        return run_transaction(self.__get_session(), lambda s: self.__search_exercises(s, phrase))

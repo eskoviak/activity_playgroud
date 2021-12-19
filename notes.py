@@ -1,5 +1,6 @@
-"""Notes
+"""Notes Utility Class
 
+Handles decoding notes and creating the output string
 """
 from dataclasses import dataclass
 from dataclasses import field
@@ -14,9 +15,11 @@ class Notes:
             "l" : "lap = 15 yd",
             "e" : "EMOM",
             "k" : "Keiser",
-            "a" : "Alternating"
+            "a" : "Alternating",
+            "_" : "Superset"
         }
 
+    ## Private functions
     def __init__(self):
         self.entries = list()
 
@@ -41,5 +44,14 @@ class Notes:
     def __add_note__(self, note : str):
         self.entries.append(note)
 
+    ## Public Functions
     def add_note(self, note : str):
+        """Decodes the note string passed back to a list notes
+
+        :param note: The string returned from the converter
+        :type note: str
+        :return: expanded string of 'english' notes
+        :rtype: str
+
+        """
         self.entries.__add_note__(note)

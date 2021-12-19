@@ -32,27 +32,28 @@
 
           <div class="body" role="main">
             
-  <section id="module-activity">
-<span id="interacting-with-the-application"></span><h1>Interacting with the Application<a class="headerlink" href="#module-activity" title="Permalink to this headline">¶</a></h1>
-<p>Activity Interface</p>
-<p>This module contains the Activity class, which provides interfaces for interacting with the activity application</p>
+  <section id="module-converter">
+<span id="interacting-with-the-application"></span><h1>Interacting with the Application<a class="headerlink" href="#module-converter" title="Permalink to this headline">¶</a></h1>
+<p>Converter interface</p>
+<p>Contains the converter class, which provides utilities to convert the input csv file into series for use in analysis.</p>
+<span class="target" id="module-notes"></span><p>Notes Utility Class</p>
+<p>Handles decoding notes and creating the output string</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="activity.Activty">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">activity.</span></span><span class="sig-name descname"><span class="pre">Activty</span></span><a class="headerlink" href="#activity.Activty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Private Functions</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="activity.Activty.search_exercises">
-<span class="sig-name descname"><span class="pre">search_exercises</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phrase</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">{}</span></span></span><a class="headerlink" href="#activity.Activty.search_exercises" title="Permalink to this definition">¶</a></dt>
-<dd><p>Search the exercises database for a exercises which contain the search phrase.</p>
+<dt class="sig sig-object py" id="notes.Notes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">notes.</span></span><span class="sig-name descname"><span class="pre">Notes</span></span><a class="headerlink" href="#notes.Notes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="notes.Notes.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notes.Notes.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes the note string passed back to a list notes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>phrase</strong> (<em>str</em>) – The string to search for</p>
+<dd class="field-odd"><p><strong>note</strong> (<em>str</em>) – The string returned from the converter</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A dictiony of the id, name and description of the exercise</p>
+<dd class="field-even"><p>expanded string of ‘english’ notes</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -118,7 +119,7 @@
       &copy;2021, Ed Skoviak.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

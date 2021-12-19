@@ -78,12 +78,12 @@ class Converter:
 
     """Public Functions"""
     def get_series(self, notation : str):
-        """convert the notation to a list ready to be converted to a np.series.  Also expand the short-hand
-        flags to a list of notes
+        """convert the notation to a list ready to be converted to a np.series.  Returns the attached notes as a string
 
         :param notation: the field as entered in the incoming csv
         :type notation: str
         :return: (notation, notes)
-        :rtype: tuple<list, list>
+        :rtype: tuple<list, str>
+        
         """
         return self.__get_series(notation)
