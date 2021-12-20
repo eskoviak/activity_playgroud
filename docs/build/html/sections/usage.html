@@ -32,11 +32,73 @@
 
           <div class="body" role="main">
             
-  <section id="module-converter">
-<span id="interacting-with-the-application"></span><h1>Interacting with the Application<a class="headerlink" href="#module-converter" title="Permalink to this headline">¶</a></h1>
-<p>Converter interface</p>
+  <section id="module-activity">
+<span id="interacting-with-the-application"></span><h1>Interacting with the Application<a class="headerlink" href="#module-activity" title="Permalink to this headline">¶</a></h1>
+<p>Activity Interface</p>
+<p>This module contains the Activity class, which provides interfaces for interacting with the activity application</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="activity.Activty">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">activity.</span></span><span class="sig-name descname"><span class="pre">Activty</span></span><a class="headerlink" href="#activity.Activty" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="activity.Activty.search_exercises">
+<span class="sig-name descname"><span class="pre">search_exercises</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phrase</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#activity.Activty.search_exercises" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the exercises database for a exercises which contain the search phrase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>phrase</strong> (<em>str</em>) – The string to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictiony of the id, name and description of the exercise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list&lt;dict&gt;</p>
+</dd>
+</dl>
+<p>The return object(s) in the list have the following format:</p>
+<p>Exercise(id: &lt;id&gt;, exercise_name: &lt;name&gt;, description: &lt;description&gt;)</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-converter"></span><p>Converter Interface</p>
 <p>Contains the converter class, which provides utilities to convert the input csv file into series for use in analysis.</p>
-<span class="target" id="module-notes"></span><p>Notes Utility Class</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="converter.Converter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">converter.</span></span><span class="sig-name descname"><span class="pre">Converter</span></span><a class="headerlink" href="#converter.Converter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="converter.Converter.get_series">
+<span class="sig-name descname"><span class="pre">get_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#converter.Converter.get_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert the notation to a list ready to be converted to a np.series.  Returns the attached notes as a string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>notation</strong> (<em>str</em>) – the field as entered in the incoming csv</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(notation, notes)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple&lt;list, str&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-models"></span><p>Models Interface</p>
+<p>Contains models with wrap the database tables in SQLAlchmy ORM</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.Exercises">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">Exercises</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.Exercises" title="Permalink to this definition">¶</a></dt>
+<dd><p>The exercises table</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.Factors">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">Factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.Factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>The factor table</p>
+</dd></dl>
+
+<span class="target" id="module-notes"></span><p>Notes Interface</p>
 <p>Handles decoding notes and creating the output string</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="notes.Notes">
@@ -56,6 +118,12 @@
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notes.Notes.clear_notes">
+<span class="sig-name descname"><span class="pre">clear_notes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notes.Notes.clear_notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the notes</p>
 </dd></dl>
 
 </dd></dl>
@@ -119,7 +187,7 @@
       &copy;2021, Ed Skoviak.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

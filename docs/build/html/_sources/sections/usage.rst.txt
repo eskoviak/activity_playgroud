@@ -7,5 +7,9 @@ Interacting with the Application
 .. automodule:: converter
     :members:
 
+.. automodule:: models
+   :members:
+
 .. automodule:: notes
     :members:
+

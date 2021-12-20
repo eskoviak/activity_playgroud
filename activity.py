@@ -6,9 +6,11 @@ from sqlalchemy.orm import sessionmaker, session
 from sqlalchemy import create_engine, or_
 from sqlalchemy_cockroachdb import run_transaction
 from models import Factors, Exercises
+from dataclasses import dataclass
 
 import numpy as np, os, re
 
+@dataclass
 class Activty:
 
     ### Private Functions

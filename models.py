@@ -1,3 +1,6 @@
+"""Models Interface
+
+Contains models with wrap the database tables in SQLAlchmy ORM"""
 import re, os
 from sqlalchemy import create_engine
 from sqlalchemy.sql.elements import True_
@@ -8,9 +11,11 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime, Tex
 from sqlalchemy.orm import relation, relationship
 from sqlalchemy.sql.sqltypes import Date
 from sqlalchemy.ext.declarative import declarative_base
+from dataclasses import dataclass
 
 Base = declarative_base()
 
+@dataclass
 class Factors(Base):
     """The factor table
     
@@ -22,6 +27,7 @@ class Factors(Base):
     def __repr__(self):
         return(f"Factor(id: {self.id}, factor{self.factor})")
 
+@dataclass
 class Exercises(Base):
     """The exercises table
     

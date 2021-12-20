@@ -1,11 +1,12 @@
-"""Converter interface
+"""Converter Interface
 
 Contains the converter class, which provides utilities to convert the input csv file into series for use in analysis.
 
 """
 import re
 import numpy as np
-
+from dataclasses import dataclass
+@dataclass
 class Converter:
 
     def __init__(self):
@@ -24,15 +25,15 @@ class Converter:
         Returns:
             (list, str) : the first list is the nd.series ready parsed from the notation, the second is a list of flags found
         """
-        str_flags = None
+        #str_flags = None
         list_cadence = []
 
-        flags = re.search(self._flag_regex, cadence_str)
-        if flags: str_flags = flags.group(0)
+        #flags = re.search(self._flag_regex, cadence_str)
+        #if flags: str_flags = flags.group(0)
 
         for token in self.__tokenize(cadence_str):
             list_cadence.extend(self.__parseOperators(token))
-        return (list_cadence, str_flags)
+        return (list_cadence)
 
     def __tokenize(self, inStr):
         """tokenize
@@ -54,12 +55,10 @@ class Converter:
 
         Args:
         inStr (str) : the input notation
-        notes (Notes) : A Notes object for capturing notes during parsing
-
 
         Returns:
         list (np.series) : the converted string
-            
+
         """
         multiplier = re.match(self._multipler_regex, inStr)
         if not multiplier: 
@@ -77,13 +76,17 @@ class Converter:
         return (np.tile(list(eval(sequence.group(0))), int(multiplier.group(0) if multiplier else 1)))
 
     """Public Functions"""
-    def get_series(self, notation : str):
-        """convert the notation to a list ready to be converted to a np.series.  Returns the attached notes as a string
+    def get_series(self, notations : list):
+        """convert the notation list to a np.series.
 
-        :param notation: the field as entered in the incoming csv
-        :type notation: str
-        :return: (notation, notes)
-        :rtype: tuple<list, str>
+        :param notations: the field as entered in the incoming csv
+        :type notations: list
+        :return: np.series
+        :rtype: list<list>
         
         """
-        return self.__get_series(notation)
+        series = []
+        for item in notations:
+            series.append(self.__get_series(item))
+
+        return series
