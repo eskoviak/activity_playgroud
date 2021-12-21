@@ -21,9 +21,16 @@ df_in = pd.read_csv(smart_open(s3_uri))
     #print(series_cadence, flags)
 #    print(pd.to_datetime(notation, utc=True))
 
+#print(df_in)
+#df_in['Notes'] = df_in['Notes'].astype('str')
+#df_in['Notes'] = df_in['Notes'].fillna('')
+print(df_in)
+
 df_out = pd.DataFrame(data = pd.to_datetime(df_in['Date'], utc=True))
 df_out.insert(1, 'Exercise', df_in['Exercise'])
 df_out.insert(2, 'Cadence', converter.get_series(df_in['Cadence']))
-df_out.insert(3, 'Notes', notes.decode_notes(df_in['Notes']))
+df_out.insert(3, 'Weights', converter.get_series(df_in['Weights']))
+#df_out.insert(4, 'Volume', converter.get_series(df_in['Cadence'])*converter.get_series(df_in['Weights']))
+#df_out.insert(5, 'Notes', notes.decode_notes(df_in['Notes'].fillna('')))
 
 print(df_out)

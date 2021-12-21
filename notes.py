@@ -4,6 +4,8 @@ Handles decoding notes and creating the output list
 """
 from dataclasses import dataclass
 from dataclasses import field
+import math
+
 
 @dataclass(repr=False)
 class Notes:
@@ -55,7 +57,7 @@ class Notes:
         :return: the decoded notes in a comma sep string
         :rtype: str
         """
-        decoded_notes = []
+        decoded_notes = ''
         first = True
         subscript = False
         for token in note:
@@ -104,7 +106,10 @@ class Notes:
         "a" : "Alternating",
         "b" : "Double Bell"
         """
+
+        #print(notes)
         notes_list = []
         for note in notes:
-            notes_list.append(self.__decode_notes(note))
+            print(note)
+            notes_list.append(self.__decode_notes(note) if note != math.nan else '')
         return notes_list
