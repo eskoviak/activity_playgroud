@@ -13,6 +13,7 @@ class Converter:
         self._multipler_regex = re.compile('^\d*(?=x)')
         self._sequence_regex = re.compile('(?<=x)(\()?([0-9.]([,\s])*)+(\))?')
         self._flag_regex = re.compile('(?<=\))([a-zA-Z]*)(_[a-z])?')
+        self._ladder_op_regex = re.compile('[>]')
 
 
     ### Private Functions
@@ -65,6 +66,12 @@ class Converter:
             rstring = (f"x({inStr})").replace('((', '(').replace('))', ')')
         else: rstring = inStr
         rstring = rstring.replace(')', ',)').replace(',,', ',')
+        ladder = re.search(self._ladder_op_regex, rstring)
+        if ladder:
+            #end = re.match(r'(?<=->)\d+', rstring)
+            start =  re.search(r'(?=>)[0-9]+', rstring)
+            print (start)
+            return( [] )
         sequence = re.search(self._sequence_regex, rstring)
         if not sequence:
             """ Check to see if the text 'BW' 
