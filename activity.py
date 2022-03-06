@@ -4,7 +4,7 @@ This module contains the Activity class, which provides interfaces for interacti
 '''
 from sqlalchemy.orm import sessionmaker, session
 from sqlalchemy import create_engine, or_
-from sqlalchemy_cockroachdb import run_transaction
+#from sqlalchemy_cockroachdb import run_transaction
 from models import Factors, Exercises
 from dataclasses import dataclass
 
