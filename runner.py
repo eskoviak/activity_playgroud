@@ -6,9 +6,9 @@ from models import Exercises
 
 loader = Loader()
 activity = Activty()
-exercise = Exercises()
+#exercise = Exercises()
 
-#print(loader.load_factors())
+print(loader.load_factors())
 #print(loader.load_exercises())
 #print(loader.load_categories())
 
@@ -16,9 +16,9 @@ exercise = Exercises()
 #    print(exercise)
 
 #print(activity.parse_cadence('2x(5,3,2)+2x(1,3)'))
-results = activity.get_categories()
-activities = {}
-for item in results:
-    activities[item.id] = item.category_name
-
-print(activities)
+#results = activity.get_categories()
+#activities = {}
+#for item in results:
+#    activities[item.id] = item.category_name
+#
+#print(activities)

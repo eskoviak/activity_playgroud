@@ -25,7 +25,7 @@ class Factors(Base):
     factor = Column(Float)
 
     def __repr__(self):
-        return(f"Factor(id: {self.id}, factor{self.factor})")
+        return(f"Factor(id: {self.reps}, factor: {self.factor})")
 
 @dataclass
 class Exercises(Base):
