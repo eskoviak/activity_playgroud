@@ -1,8 +1,4 @@
 .DS_Store
-
-**/vpython39-ubuntu
 **/vpython3.10
 
 **/__pycache__
-
-**/vpython3.10-macos
