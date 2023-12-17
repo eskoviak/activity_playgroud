@@ -32,13 +32,9 @@ class Exercises(Base):
     """
     __tablename__ = 'exercises'
 
-    #id=Column(Integer, primary_key=True)
     id : Mapped[int] = mapped_column(primary_key=True)
-    #exercise_name=Column(String(50), nullable=False)
     exercise_name  : Mapped[str] = mapped_column(nullable=False)
-    #description=Column(Text, nullable=True)
     description : Mapped[str] = mapped_column(nullable=True)
-    #exrx_name=Column(String(60, nullable=True))
     exrx_name : Mapped[str] = mapped_column(nullable=True) 
 
     def __repr__(self):
@@ -61,6 +57,35 @@ class Sets(Base):
     weights : Mapped[str] = mapped_column(nullable=True)
     weight_unit : Mapped[str] = mapped_column(nullable=True)
     notes : Mapped[str] = mapped_column(nullable=True)
+    
+@dataclass
+class Workout(Base):
+    """_summary_
+
+    :param Base: _description_
+    :type Base: _type_
+    
+    """
+
+    __tablename__ = 'workouts'
+    id : Mapped[int] = mapped_column(primary_key=True)
+    date : Mapped[datetime] = mapped_column(nullable=False)
+    location : Mapped[str] = mapped_column(String(30), nullable=True)
+    
+@dataclass
+class Circuit(Base):
+    """
+
+    :param Base: _description_
+    :type Base: _type_
+    """
+    
+    __tablename__ = 'circuits'
+    id : Mapped[int] = mapped_column(primary_key=True)
+    workout_id : Mapped[int] = mapped_column(ForeignKey(Workout.id))
+    element : Mapped[str] = mapped_column(String(100), nullable=False)
+    cadence : Mapped[str] = mapped_column(String(100), nullable=False)
+
 
 if __name__ == '__main__':
     try:

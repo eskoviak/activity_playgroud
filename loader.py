@@ -3,11 +3,14 @@ import csv, os
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from models import Factors, Exercises
+from pathlib import Path
+
+data_home = Path('/Users/edmundlskoviak/iCloud/Data Sets/')
 
 class Loader:
     """ PRIVATE FUNCTIONS """
     def __init__(self):
-        self._uri = f"postgresql+psycopg2://postgres@localhost/activity"
+        self._uri = os.environ['PG_AZURE_URI']
 
 #    def __get_session(self):
 #        """Gets a sessionmaker object
@@ -60,8 +63,8 @@ class Loader:
             Transaction wrapper function for __insert_factors
             
         """
-
-        return self.__insert_factors(self.__read_csv_file('data/ORM Factors.csv'))
+        #return self.__read_csv_file(data_home / 'ORM Factors.csv')   
+        return self.__insert_factors(self.__read_csv_file(data_home / 'ORM Factors.csv'))
 
     #def load_exercises(self):
     #    """load_exercises
@@ -70,3 +73,7 @@ class Loader:
     #    """
     #    return run_transaction(self.__get_session(), 
     #        lambda s : self.__insert_exercises(s, self.__read_csv_file('data/exercises.csv')) )
+
+if __name__ == '__main__':
+    loader = Loader()
+    loader.load_factors()
