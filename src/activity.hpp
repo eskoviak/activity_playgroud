@@ -8,6 +8,14 @@
 #define ACTIVITY
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include <pqxx/pqxx>
+
+
+// connect.cpp
+pqxx::connection get_pq_connect();
+  
+// activity.cpp
+std::map<int, std::string> get_exercises();
 
 #endif /* activity.hpp*/
